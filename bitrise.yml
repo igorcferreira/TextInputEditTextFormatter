@@ -1,0 +1,57 @@
+format_version: "11"
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: android
+app:
+  envs:
+  - PROJECT_LOCATION: .
+  - MODULE: textinputedittextformatter
+  - VARIANT: Release
+  - GRADLE_BUILD_FILE_PATH: $PROJECT_LOCATION/build.gradle.kts
+  - GRADLEW_PATH: $PROJECT_LOCATION/gradlew
+trigger_map:
+- push_branch: main
+  workflow: build
+- pull_request_source_branch: '*'
+  pull_request_target_branch: main
+  workflow: check
+workflows:
+  build:
+    description: Builds the SDK to validate it.
+    steps:
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@6: {}
+    - cache-pull@2: {}
+    - install-missing-android-tools@3:
+        inputs:
+        - gradlew_path: $GRADLEW_PATH
+    - android-lint@0:
+        inputs:
+        - project_location: $PROJECT_LOCATION
+        - variant: $VARIANT
+    - android-unit-test@1:
+        inputs:
+        - project_location: $PROJECT_LOCATION
+        - variant: $VARIANT
+    - gradle-runner@2:
+        inputs:
+        - gradle_task: :$MODULE:assemble$VARIANT
+    - cache-push@2: {}
+    - deploy-to-bitrise-io@2: {}
+  check:
+    description: Runs tests.
+    steps:
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@6: {}
+    - cache-pull@2: {}
+    - install-missing-android-tools@3:
+        inputs:
+        - gradlew_path: $GRADLEW_PATH
+    - android-lint@0: {}
+    - android-unit-test@1:
+        inputs:
+        - project_location: $PROJECT_LOCATION
+        - variant: $VARIANT
+    - cache-push@2: {}
+    - deploy-to-bitrise-io@2: {}

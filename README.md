@@ -36,3 +36,9 @@ binding.textInputEditText.apply {
     addTextChangedListener(TextInputEditTextMask(this, formatter))
 }
 ```
+
+---
+
+### License
+
+[Apache 2.0](LICENSE)
