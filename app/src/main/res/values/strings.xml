@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TextInputEditTextFormatter</string>
+    <string name="currency_formatter">Currency Formatter</string>
+</resources>
