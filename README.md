@@ -1,12 +1,8 @@
-# TextInputEditTextFormatter [![Build Status](https://app.bitrise.io/app/21913789073d341c/status.svg?token=kYOCprddVCv8w7u9DI4pIw&branch=main)](https://app.bitrise.io/app/21913789073d341c)
+# TextInputEditTextFormatter [![Build Status](https://app.bitrise.io/app/21913789073d341c/status.svg?token=kYOCprddVCv8w7u9DI4pIw&branch=main)](https://app.bitrise.io/app/21913789073d341c) [![Release](https://jitpack.io/v/igorcferreira/TextInputEditTextFormatter.svg)](https://jitpack.io/igorcferreira/TextInputEditTextFormatter)
 
 The `TextInputEditTextFormatter` is an implementation of `TextWatcher` that helps formatting text
 input by the user. For example, formatting the number `5000` into `$5,000` based on the currency
 code "USD".
-
-### Demonstration
-
-![Demonstration of currency inputs being formatted. Example, the input "1234" becomes "$1,234"](docs/demo.gif)
 
 ### Usage
 
@@ -37,7 +33,13 @@ binding.textInputEditText.apply {
 }
 ```
 
----
+### Documentation
+
+- [Javadoc](https://javadoc.jitpack.io/com/github/igorcferreira/TextInputEditTextFormatter/latest/javadoc/)
+
+### Demonstration
+
+![Demonstration of currency inputs being formatted. Example, the input "1234" becomes "$1,234"](docs/demo.gif)
 
 ### License
 
