@@ -12,7 +12,6 @@ repositories {
     mavenCentral()
     maven {
         url = "https://jitpack.io"
-        content { includeGroup("com.github.igorcferreira") }
     }
 }
 ```
@@ -20,22 +19,40 @@ repositories {
 **Step 2.** Add the TextInputEditTextFormatter library into the dependencies
 ```kotlin
 dependencies {
-    //...
-    implementation("com.github.igorcferreira:TextInputEditTextFormatter:1.0.0")
+    implementation("com.github.igorcferreira.TextInputEditTextFormatter:textinputedittextformatter:1.0.0")
+    //If you are using Fragment/Activities, add
+    implementation("com.github.igorcferreira.TextInputEditTextFormatter:textinputedittextformatter-android:1.0.0")
+    //Or if you are using Combine, add
+    implementation("com.github.igorcferreira.TextInputEditTextFormatter:textinputedittextformatter-combine:1.0.0")
 }
 ```
 
-**Step 3.** Include the text formatter into your `TextInputEditText`
+**Step 3.1.** TextInputEditText: Include the text formatter into your `TextInputEditText`
 ```kotlin
 val formatter = CurrencyFormatter("USD", eraseSingleSymbol = true)
+//...
 binding.textInputEditText.apply {
     addTextChangedListener(TextInputEditTextMask(this, formatter))
 }
 ```
 
+**Step 3.2.** Combine: Include the text formatter into your `TextInputEditText`
+```kotlin
+val formatter = CurrencyFormatter("USD", eraseSingleSymbol = true)
+//...
+OutlinedTextField(
+    value = composeInput,
+    onValueChange = { composeInput = it },
+    visualTransformation = InputFormatVisualTransformation(formatter),
+    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+)
+```
+
 ### Documentation
 
-- [Javadoc](https://javadoc.jitpack.io/com/github/igorcferreira/TextInputEditTextFormatter/latest/javadoc/)
+- [textinputedittextformatter Javadoc](https://javadoc.jitpack.io/com/github/igorcferreira/TextInputEditTextFormatter/textinputedittextformatter/latest/javadoc/)
+- [textinputedittextformatter-android Javadoc](https://javadoc.jitpack.io/com/github/igorcferreira/TextInputEditTextFormatter/textinputedittextformatter-android/latest/javadoc/)
+- [textinputedittextformatter-combine Javadoc](https://javadoc.jitpack.io/com/github/igorcferreira/TextInputEditTextFormatter/textinputedittextformatter-combine/latest/javadoc/)
 
 ### Demonstration
 
