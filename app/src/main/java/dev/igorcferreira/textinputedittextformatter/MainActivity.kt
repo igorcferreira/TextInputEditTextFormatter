@@ -12,6 +12,7 @@ import dev.igorcferreira.textinputedittextformatter.formatter.CurrencyFormatter
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val formatter = CurrencyFormatter("USD", eraseSingleSymbol = true)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configureTextInputEditText() {
-        val formatter = CurrencyFormatter("USD", eraseSingleSymbol = true)
+        binding.inputCompose.formatter = formatter
         binding.textInputEditText.apply {
             addTextChangedListener(TextInputEditTextMask(this, formatter))
         }

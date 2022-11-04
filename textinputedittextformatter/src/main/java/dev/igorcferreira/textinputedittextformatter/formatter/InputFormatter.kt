@@ -9,6 +9,10 @@ package dev.igorcferreira.textinputedittextformatter.formatter
  * when formatting user input.
  */
 interface InputFormatter {
+    object None: InputFormatter {
+        override fun format(text: String): String = text
+    }
+
     /**
      * Method used to format an input text based on the class definition.
      * @param text  Original text input by the user to be validated/formatted.
