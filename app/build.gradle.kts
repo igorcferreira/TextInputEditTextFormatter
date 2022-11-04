@@ -5,10 +5,10 @@ plugins {
 
 val bundleId: String by project
 val buildNumber: String by project
-val buildVersion: String by project
+val version: String by project
 
 android {
-    namespace = bundleId
+    namespace = "dev.igorcferreira.textinputedittextformatter.app"
     compileSdk = 33
 
     defaultConfig {
@@ -16,7 +16,7 @@ android {
         minSdk = 24
         targetSdk = 33
         versionCode = buildNumber.toInt()
-        versionName = buildVersion
+        versionName = version
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

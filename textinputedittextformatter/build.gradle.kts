@@ -6,8 +6,6 @@ plugins {
 }
 
 val bundleId: String by project
-val buildVersion: String by project
-val sdkGroupId: String by project
 val sdkArtifactId: String by project
 
 android {
@@ -54,13 +52,16 @@ artifacts {
 }
 
 afterEvaluate {
+    val version: String by project
+    val group: String by project
+
     publishing {
         publications {
             create<MavenPublication>("release") {
                 from(components.getByName("release"))
-                groupId = sdkGroupId
+                groupId = group
                 artifactId = sdkArtifactId
-                version = buildVersion
+                this.version = version
 
                 artifact(javadocJar)
 
