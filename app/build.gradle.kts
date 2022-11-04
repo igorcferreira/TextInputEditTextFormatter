@@ -53,6 +53,7 @@ dependencies {
     implementation("androidx.compose.material:material:1.3.0")
 
     implementation(project(":textinputedittextformatter"))
+    implementation(project(":textinputedittextformatter-android"))
     implementation(project(":textinputedittextformatter-compose"))
 
     testImplementation("junit:junit:4.13.2")

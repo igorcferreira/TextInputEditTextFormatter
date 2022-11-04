@@ -9,7 +9,7 @@ val bundleId: String by project
 val sdkArtifactId: String by project
 
 android {
-    namespace = "$bundleId.compose"
+    namespace = "$bundleId.android"
     compileSdk = 33
 
     defaultConfig {
@@ -29,19 +29,11 @@ android {
             )
         }
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.2"
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
+    kotlinOptions.jvmTarget = "11"
 }
 
 val javadocJar by tasks.registering(Jar::class) {
@@ -64,14 +56,14 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 from(components.getByName("release"))
-                groupId = "$group-compose"
+                groupId = "$group-android"
                 artifactId = sdkArtifactId
                 this.version = version
 
                 artifact(javadocJar)
 
                 pom {
-                    name.set("TextInputEditTextFormatter Compose")
+                    name.set("TextInputEditTextFormatter Android")
                     licenses {
                         license {
                             name.set("Apache-2.0")
@@ -103,8 +95,10 @@ afterEvaluate {
 }
 
 dependencies {
+
     implementation("androidx.core:core-ktx:[1.9,2.0[")
-    implementation("androidx.compose.foundation:foundation:[1.3,1.4[")
+    implementation("androidx.appcompat:appcompat:[1.5,1.6[")
+    implementation("com.google.android.material:material:[1.7,1.8[")
 
     implementation(project(":textinputedittextformatter"))
 

@@ -1,8 +1,4 @@
-/*
- * Copyright (c) 2022 Igor Ferreira.
- */
-
-package dev.igorcferreira.textinputedittextformatter.android.material.textfield
+package dev.igorcferreira.textinputedittextformatter.android.material
 
 import android.text.Editable
 import android.text.TextWatcher

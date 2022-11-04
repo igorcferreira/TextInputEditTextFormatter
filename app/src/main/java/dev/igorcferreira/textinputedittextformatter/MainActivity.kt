@@ -5,8 +5,8 @@ package dev.igorcferreira.textinputedittextformatter
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import dev.igorcferreira.textinputedittextformatter.android.material.textfield.TextInputEditTextMask
 import dev.igorcferreira.textinputedittextformatter.app.databinding.ActivityMainBinding
+import dev.igorcferreira.textinputedittextformatter.android.material.TextInputEditTextMask
 import dev.igorcferreira.textinputedittextformatter.formatter.CurrencyFormatter
 
 class MainActivity : AppCompatActivity() {
