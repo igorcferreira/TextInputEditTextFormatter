@@ -64,8 +64,8 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 from(components.getByName("release"))
-                groupId = "$group-compose"
-                artifactId = sdkArtifactId
+                groupId = group
+                artifactId = "$sdkArtifactId-compose"
                 this.version = version
 
                 artifact(javadocJar)

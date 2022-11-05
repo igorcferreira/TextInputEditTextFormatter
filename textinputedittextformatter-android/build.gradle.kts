@@ -56,8 +56,8 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 from(components.getByName("release"))
-                groupId = "$group-android"
-                artifactId = sdkArtifactId
+                groupId = group
+                artifactId = "$sdkArtifactId-android"
                 this.version = version
 
                 artifact(javadocJar)
