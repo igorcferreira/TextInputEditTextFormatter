@@ -4,7 +4,6 @@ project_type: android
 app:
   envs:
   - PROJECT_LOCATION: .
-  - MODULE: textinputedittextformatter
   - VARIANT: Release
   - GRADLE_BUILD_FILE_PATH: $PROJECT_LOCATION/build.gradle.kts
   - GRADLEW_PATH: $PROJECT_LOCATION/gradlew
@@ -37,7 +36,7 @@ workflows:
         - variant: $VARIANT
     - gradle-runner@2:
         inputs:
-        - gradle_task: :$MODULE:assemble$VARIANT
+        - gradle_task: assemble$VARIANT
     - cache-push@2: {}
     - deploy-to-bitrise-io@2: {}
   check:
@@ -77,6 +76,6 @@ workflows:
         - variant: $VARIANT
     - gradle-runner@2:
         inputs:
-        - gradle_task: :$MODULE:publish "-Pversion=$BITRISE_GIT_TAG"
+        - gradle_task: publish "-Pversion=$BITRISE_GIT_TAG"
     - cache-push@2: {}
     - deploy-to-bitrise-io@2: {}

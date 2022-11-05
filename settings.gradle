@@ -19,3 +19,5 @@ dependencyResolutionManagement {
 rootProject.name = "TextInputEditTextFormatter"
 include ':app'
 include ':textinputedittextformatter'
+include ':textinputedittextformatter-compose'
+include ':textinputedittextformatter-android'

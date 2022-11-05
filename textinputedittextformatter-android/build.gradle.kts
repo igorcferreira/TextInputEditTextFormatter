@@ -9,7 +9,7 @@ val bundleId: String by project
 val sdkArtifactId: String by project
 
 android {
-    namespace = bundleId
+    namespace = "$bundleId.android"
     compileSdk = 33
 
     defaultConfig {
@@ -21,12 +21,10 @@ android {
     }
 
     buildTypes {
-        debug {
-            isMinifyEnabled = false
-        }
         release {
             isMinifyEnabled = false
             proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
@@ -58,14 +56,14 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 from(components.getByName("release"))
-                groupId = group
+                groupId = "$group-android"
                 artifactId = sdkArtifactId
                 this.version = version
 
                 artifact(javadocJar)
 
                 pom {
-                    name.set("TextInputEditTextFormatter")
+                    name.set("TextInputEditTextFormatter Android")
                     licenses {
                         license {
                             name.set("Apache-2.0")
@@ -97,9 +95,16 @@ afterEvaluate {
 }
 
 dependencies {
-    testImplementation("junit:junit:4.13.2")
+
+    implementation("androidx.core:core-ktx:[1.9,2.0[")
+    implementation("androidx.appcompat:appcompat:[1.5,1.6[")
+    implementation("com.google.android.material:material:[1.7,1.8[")
+
+    implementation(project(":textinputedittextformatter"))
+
     testImplementation("org.mockito:mockito-core:4.2.0")
     testImplementation("org.mockito:mockito-inline:4.2.0")
+    testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 }

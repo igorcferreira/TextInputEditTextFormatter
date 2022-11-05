@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="dev.igorcferreira.textinputedittextformatter.MainActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -36,5 +36,25 @@
             android:inputType="numberDecimal" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textViewCompose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/currency_formatter"
+        android:textStyle="bold"
+        android:textAlignment="textStart"
+        android:layout_margin="@dimen/view_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayout" />
+
+    <dev.igorcferreira.textinputedittextformatter.FormatterTextField
+        android:id="@+id/inputCompose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/view_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewCompose" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

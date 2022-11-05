@@ -1,10 +1,7 @@
-/*
- * Copyright (c) 2022 Igor Ferreira.
- */
-package dev.igorcferreira.textinputedittextformatter
+package dev.igorcferreira.textinputedittextformatter.android
 
 import com.google.android.material.textfield.TextInputEditText
-import dev.igorcferreira.textinputedittextformatter.android.material.textfield.TextInputEditTextMask
+import dev.igorcferreira.textinputedittextformatter.android.material.TextInputEditTextMask
 import dev.igorcferreira.textinputedittextformatter.formatter.CurrencyFormatter
 import org.junit.Test
 import org.mockito.Mockito
