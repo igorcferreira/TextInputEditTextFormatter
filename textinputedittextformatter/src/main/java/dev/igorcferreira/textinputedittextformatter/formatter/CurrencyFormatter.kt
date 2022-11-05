@@ -40,7 +40,7 @@ class CurrencyFormatter(
      * @return Formatted text or null if the text is invalid
      */
     override fun format(text: String): String? {
-        if (text.isSymbolOfCurrency(currencyCode)) {
+        if (text.isSymbolOfCurrency(currencyCode, locale)) {
             return if (eraseSingleSymbol) "" else text
         }
 
