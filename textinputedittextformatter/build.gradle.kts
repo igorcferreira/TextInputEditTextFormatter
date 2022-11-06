@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id("java-library")
+    id("org.jetbrains.kotlin.jvm")
     id("org.jetbrains.dokka")
     id("maven-publish")
 }
@@ -8,34 +8,9 @@ plugins {
 val bundleId: String by project
 val sdkArtifactId: String by project
 
-android {
-    namespace = bundleId
-    compileSdk = 33
-
-    defaultConfig {
-        minSdk = 24
-        targetSdk = 33
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        debug {
-            isMinifyEnabled = false
-        }
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions.jvmTarget = "11"
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 val javadocJar by tasks.registering(Jar::class) {
@@ -57,7 +32,7 @@ afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("release") {
-                from(components.getByName("release"))
+                from(components.getByName("java"))
                 groupId = group
                 artifactId = sdkArtifactId
                 this.version = version
@@ -100,6 +75,4 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito:mockito-core:4.2.0")
     testImplementation("org.mockito:mockito-inline:4.2.0")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 }

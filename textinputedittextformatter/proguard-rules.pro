@@ -20,6 +20,6 @@
 # hide the original source file name.
 -renamesourcefileattribute SourceFile
 -keep interface dev.igorcferreira.textinputedittextformatter.formatter.InputFormatter { public *; }
--keep interface dev.igorcferreira.textinputedittextformatter.formatter.InputFormatter$None { public *; }
+-keep class dev.igorcferreira.textinputedittextformatter.formatter.InputFormatter$None { public *; }
 -keep class dev.igorcferreira.textinputedittextformatter.formatter.CurrencyFormatter { public *; }
 -keep class dev.igorcferreira.textinputedittextformatter.android.material.textfield.TextInputEditTextMask { public *; }
