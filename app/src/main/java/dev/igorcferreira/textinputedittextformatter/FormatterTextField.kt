@@ -11,7 +11,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import dev.igorcferreira.textinputedittextformatter.compose.InputFormatVisualTransformation
 import dev.igorcferreira.textinputedittextformatter.formatter.InputFormatter
 
-class FormatterTextField constructor(
+class FormatterMaterialOutlinedTextField constructor(
     context: Context,
     formatter: InputFormatter,
     attrs: AttributeSet? = null,
@@ -25,13 +25,19 @@ class FormatterTextField constructor(
     ): this(context, InputFormatter.None, attrs, defStyle)
 
     private var _formatter = mutableStateOf(formatter)
+    private var _input: MutableState<String> = mutableStateOf("")
+
+    var input: String
+        get() = _input.value
+        set(value) { _input.value = value }
+
     var formatter: InputFormatter
         get() = _formatter.value
         set(value) { _formatter.value = value }
 
     @Composable
     override fun Content() {
-        var composeInput by remember { mutableStateOf("") }
+        var composeInput by remember { _input }
         val formatterState by remember { _formatter }
 
         MaterialTheme {

@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="dev.igorcferreira.textinputedittextformatter.MainActivity">
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/currency_formatter"
+        android:text="@string/currency_formatter_textinput"
         android:textStyle="bold"
         android:textAlignment="textStart"
-        android:layout_margin="@dimen/view_margin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_margin="@dimen/view_margin" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/view_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView"
         app:helperTextEnabled="true"
         app:expandedHintEnabled="true"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -37,24 +32,32 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/outputTextInputEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/output_textinputedittext"
+        android:layout_margin="@dimen/view_margin" />
+
     <TextView
-        android:id="@+id/textViewCompose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/currency_formatter"
+        android:text="@string/currency_formatter_combine"
         android:textStyle="bold"
         android:textAlignment="textStart"
-        android:layout_margin="@dimen/view_margin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayout" />
+        android:layout_margin="@dimen/view_margin" />
 
-    <dev.igorcferreira.textinputedittextformatter.FormatterTextField
+    <dev.igorcferreira.textinputedittextformatter.FormatterMaterialOutlinedTextField
         android:id="@+id/inputCompose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/view_margin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewCompose" />
+        android:layout_margin="@dimen/view_margin" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/outputOutlineTextField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/output_outlinedtextfield"
+        android:layout_margin="@dimen/view_margin" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

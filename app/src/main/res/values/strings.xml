@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">TextInputEditTextFormatter</string>
-    <string name="currency_formatter">Currency Formatter</string>
+    <string name="currency_formatter_textinput">Currency Formatter (TextInputEditText)</string>
+    <string name="currency_formatter_combine">Currency Formatter (OutlinedTextField)</string>
+    <string name="output_textinputedittext">Output TextInputEditText</string>
+    <string name="output_outlinedtextfield">Output OutlinedTextField</string>
 </resources>
