@@ -19,11 +19,11 @@ repositories {
 **Step 2.** Add the TextInputEditTextFormatter library into the dependencies
 ```kotlin
 dependencies {
-    implementation("com.github.igorcferreira.TextInputEditTextFormatter:textinputedittextformatter:1.0.0")
+    implementation("com.github.igorcferreira.TextInputEditTextFormatter:textinputedittextformatter:[1.0,1.1[")
     //If you are using Fragment/Activities, add
-    implementation("com.github.igorcferreira.TextInputEditTextFormatter:textinputedittextformatter-android:1.0.0")
+    implementation("com.github.igorcferreira.TextInputEditTextFormatter:textinputedittextformatter-android:[1.0,1.1[")
     //Or if you are using Combine, add
-    implementation("com.github.igorcferreira.TextInputEditTextFormatter:textinputedittextformatter-combine:1.0.0")
+    implementation("com.github.igorcferreira.TextInputEditTextFormatter:textinputedittextformatter-combine:[1.0, 1.1[")
 }
 ```
 
