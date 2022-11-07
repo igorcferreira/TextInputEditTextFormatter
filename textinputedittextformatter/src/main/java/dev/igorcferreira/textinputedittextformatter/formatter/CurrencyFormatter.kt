@@ -10,7 +10,7 @@ import dev.igorcferreira.textinputedittextformatter.extension.isSymbolOfCurrency
 import java.util.Locale
 
 /**
- * Implementation of [InputFormatter] to valdiate and convert text inputs into well formatted
+ * Implementation of [InputFormatter] to validate and convert text inputs into well formatted
  * currency text. For example, the input "5000" will be converted into "$5,000" for a
  * currencyCode USD.
  *
@@ -24,7 +24,7 @@ import java.util.Locale
  * For example, for a minimumFractionDigits of 2, the input "500.123" is converted into "$500.12"
  * @param locale The desired [Locale] to which the string will be adapted
  *
- * @see [InputFormatter], [dev.igorcferreira.textinputedittextformatter.android.material.textfield.TextInputEditTextMask]
+ * @see [InputFormatter], [dev.igorcferreira.textinputedittextformatter.android.material.TextInputEditTextMask]
  */
 class CurrencyFormatter(
     private val currencyCode: String,
@@ -33,6 +33,20 @@ class CurrencyFormatter(
     private val maximumFractionDigits: Int = Int.MAX_VALUE,
     private val locale: Locale = Locale.getDefault(Locale.Category.DISPLAY)
 ): InputFormatter {
+
+    /**
+     * This method can be used to extract the numeric value of the currency input
+     *
+     * @param text Formatted input. Example: £123,456.78
+     * @return Unformatted value, represented as a double. Example: 123456.78
+     */
+    @Suppress("MemberVisibilityCanBePrivate")
+    fun extractDouble(text: String): Double? = text.toDoubleOrNull() ?: text.formatAsCurrency(
+        currencyCode = currencyCode,
+        minimumFractionDigits = 0,
+        maximumFractionDigits = Int.MAX_VALUE,
+        locale = locale
+    )
 
     /**
      * Method used to format an input text based on the class definition.
@@ -44,15 +58,7 @@ class CurrencyFormatter(
             return if (eraseSingleSymbol) "" else text
         }
 
-        /** We are using a more permissive conversion into double to better format the text */
-        val double = text.toDoubleOrNull() ?: text.formatAsCurrency(
-            currencyCode = currencyCode,
-            minimumFractionDigits = 0,
-            maximumFractionDigits = Int.MAX_VALUE,
-            locale = locale
-        )
-
-        return double
+        return extractDouble(text)
             ?.formatForCurrency(
                 currencyCode = currencyCode,
                 minimumFractionDigits = minimumFractionDigits,

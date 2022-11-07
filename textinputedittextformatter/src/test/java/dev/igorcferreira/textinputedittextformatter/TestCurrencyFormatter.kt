@@ -232,4 +232,17 @@ class TestCurrencyFormatter {
         assertEquals("$1,234.124", formatter.format("$1234.1238"))
         assertEquals("$1,234.124", formatter.format("$1,234.1238"))
     }
+
+    @Test
+    fun `when a pound value is set, the cleanup code should return a valid double`() {
+        val locale = Locale.UK
+        val formatter = CurrencyFormatter(
+            currencyCode = "GBP",
+            eraseSingleSymbol = true,
+            locale = locale
+        )
+
+        assertEquals(123_456_789.789, formatter.extractDouble("£123,456.789"))
+        assertEquals(123_456_789.0, formatter.extractDouble("£123,456,789"))
+    }
 }

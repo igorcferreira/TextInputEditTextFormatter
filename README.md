@@ -48,6 +48,21 @@ OutlinedTextField(
 )
 ```
 
+**Extracting values:**
+Some formatters, like the `CurrencyFormatter` may provide a way to cleanup the input to an non-formatted style.
+This may help with propagating the result of the user input into other layers of the app or navigation flow.
+```kotlin
+val formatter = CurrencyFormatter("USD", eraseSingleSymbol = true)
+//...
+binding.textInputEditText.apply {
+    addTextChangedListener(TextInputEditTextMask(this, formatter))
+}
+//...
+val number = formatter.extractDouble(binding.textInputEditText.text.toString())
+```
+On Combine, this `extractDouble` don't need to be used once the formatter is applied as a mask,
+not as a mutation of the actual value in the UI object.
+
 ### Documentation
 
 - [textinputedittextformatter Javadoc](https://javadoc.jitpack.io/com/github/igorcferreira/TextInputEditTextFormatter/textinputedittextformatter/latest/javadoc/)
