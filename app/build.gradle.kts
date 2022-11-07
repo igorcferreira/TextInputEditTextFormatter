@@ -19,6 +19,7 @@ android {
         versionName = version
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        resourceConfigurations += "en"
     }
 
     buildTypes {
@@ -49,7 +50,7 @@ dependencies {
     val localMaven: String by project
 
     implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.5.1")
+    implementation("androidx.appcompat:appcompat:1.6.0-rc01")
     implementation("com.google.android.material:material:1.7.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.compose.material:material:1.3.0")
