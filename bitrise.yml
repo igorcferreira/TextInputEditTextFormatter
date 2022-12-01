@@ -76,6 +76,6 @@ workflows:
         - variant: $VARIANT
     - gradle-runner@2:
         inputs:
-        - gradle_task: publish "-Pversion=$BITRISE_GIT_TAG"
+        - gradle_task: publishToMavenLocal "-Pversion=$BITRISE_GIT_TAG"
     - cache-push@2: {}
     - deploy-to-bitrise-io@2: {}
